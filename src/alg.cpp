@@ -31,15 +31,18 @@ double expn(double x, uint16_t count) {
 }
 
 double sinn(double x, uint16_t count) {
-  if (count > 0) {
-    return calcItem(x, count * 2 + 1) * pown(-1, count) + sinn(x, count - 1);
+  double result = 0;
+  for (uint16_t i = 0; i < count; i++) {
+    result += calcItem(x, i * 2 + 1) * pown(-1, i);
   }
-  return calcItem(x, count * 2 + 1) * pown(-1, count);
+  return result;
 }
 
 double cosn(double x, uint16_t count) {
-  if (count > 0) {
-    return calcItem(x, count * 2) * pown(-1, count) + cosn(x, count - 1);
+  double result = 0;
+  for (uint16_t i = 0; i < count; i++) {
+    result += calcItem(x, i * 2 ) * pown(-1, i);
   }
-  return calcItem(x, count * 2) * pown(-1, count);
+  return result;
 }
+
